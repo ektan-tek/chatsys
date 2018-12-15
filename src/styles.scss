@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+$grid-breakpoints: (xs: 0,
+sm: 576px,
+md: 768px,
+lg: 992px,
+xl: 1200px);
+.label-icon-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-label-icon {
+  padding: 0;
+  margin: 0;
+}
+
+.button-tab-icon {
+  padding: 0;
+  margin: 0;
+}
+
+.mat-label-icon:hover {
+  transform: scale(1.5);
+}

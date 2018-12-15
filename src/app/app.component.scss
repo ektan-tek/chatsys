@@ -1,0 +1,108 @@
+.pgsidebar-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.pgsidebar-is-mobile .pgsidebar-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+h1.pgsidebar-app-name {
+  margin-left: 8px;
+}
+
+.weblogo-container {
+  display: flex;
+  max-height: -webkit-fill-available;
+}
+
+.weblogo {
+  max-width: 100% !important;
+  object-fit: contain;
+}
+
+.pgsidebar-sidenav-container,
+.notification-sidenav {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+}
+
+.pgsidebar-is-mobile .pgsidebar-sidenav-container,
+.notification-sidenav {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile layouts. */
+  flex: 1 0 auto;
+}
+
+
+
+.modal-content-container {
+  max-width: 100%;
+  max-height: 100%;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.notification-sidenav {
+  width: 30%;
+}
+
+
+.page-content {
+  margin: 1%;
+  /*overflow:hidden;*/
+}
+
+
+
+.navbg {
+  background: black;
+
+  mat-nav-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    a {
+      color: #fff;
+      display: block;
+
+      i {
+        padding: 7px;
+      }
+
+      .mouseOver {
+        background-color: #00a8ff;
+      }
+    }
+
+  }
+
+}
+
+
+
+.nav-mat-icon {
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.notification-sidenav2 {
+  display: flex;
+  width: 20%;
+  /*
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 0, 0, 0.5);
+  */
+}
