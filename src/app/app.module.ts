@@ -4,7 +4,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MaterialModule } from "./material";
-import { NgChatModule } from "ng-chat";
+
 
 import { HttpClientModule } from "@angular/common/http";
 import { HttpModule } from "@angular/http";
@@ -13,9 +13,14 @@ import { HttpModule } from "@angular/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SelectorComponent } from './@component/selector/selector.component';
+import { MainContentComponent } from './@component/main-content/main-content.component';
+import { ServerContentComponent } from './@component/server-content/server-content.component';
+import { ClientChatComponent } from './@component/client-chat/client-chat.component';
+import { ChatFunctionComponent } from './@component/chat-function/chat-function.component';
+import { ManageClientComponent } from './@component/manage-client/manage-client.component';
 
 @NgModule({
-  declarations: [AppComponent, SelectorComponent],
+  declarations: [AppComponent, SelectorComponent, MainContentComponent, ServerContentComponent, ClientChatComponent, ChatFunctionComponent, ManageClientComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,8 +30,9 @@ import { SelectorComponent } from './@component/selector/selector.component';
     NgbModule,
     MaterialModule,
     HttpModule,
+
     HttpClientModule,
-    NgChatModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

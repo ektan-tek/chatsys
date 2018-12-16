@@ -1,0 +1,158 @@
+{
+  "clients": [
+    {
+      "id": 1,
+      "name": "client001",
+      "online": true,
+      "block": false
+    },
+    {
+      "id": 2,
+      "name": "client002",
+      "online": true,
+      "block": false
+    },
+    {
+      "id": 3,
+      "name": "client003",
+      "online": true,
+      "block": false
+    }
+  ],
+  "queue_act": [
+    {
+      "action": "put",
+      "client": 3,
+      "msg": "Put into Queue - img",
+      "id": 1
+    },
+    {
+      "action": "auto-notify",
+      "client": 3,
+      "msg": "Queue notify client",
+      "id": 2
+    },
+    {
+      "action": "get",
+      "client": 3,
+      "msg": "Auto get, Remove Msg from Q",
+      "id": 3
+    },
+    {
+      "action": "get",
+      "client": 3,
+      "msg": "Auto get, Remove Msg from Q",
+      "id": 4
+    },
+    {
+      "action": "put",
+      "client": 1,
+      "msg": "Put into Queue - msg",
+      "id": 5
+    },
+    {
+      "action": "put",
+      "client": 2,
+      "msg": "Put into Queue - img",
+      "id": 6
+    },
+    {
+      "action": "put",
+      "client": 2,
+      "msg": "Put into Queue - msg",
+      "id": 7
+    },
+    {
+      "action": "auto-notify",
+      "client": 2,
+      "msg": "Queue notify client",
+      "id": 8
+    },
+    {
+      "action": "get",
+      "client": 2,
+      "msg": "Auto get, Remove Msg from Q",
+      "id": 9
+    },
+    {
+      "action": "put",
+      "client": 1,
+      "msg": "Put into Queue - img",
+      "id": 10
+    },
+    {
+      "action": "notify",
+      "client": 1,
+      "msg": "Client is online, Remove Msg from Q",
+      "id": 11
+    },
+    {
+      "action": "notify",
+      "client": 1,
+      "msg": "Client is online, Remove Msg from Q",
+      "id": 12
+    },
+    {
+      "action": "put",
+      "client": 1,
+      "msg": "Put into Queue - oth",
+      "id": 13
+    },
+    {
+      "action": "notify",
+      "client": 1,
+      "msg": "Client is online, Remove Msg from Q",
+      "id": 14
+    }
+  ],
+  "queue_content": [
+    {
+      "from": 1,
+      "to": 3,
+      "content": "https://cdn-images-1.medium.com/max/2000/1*bvdSF4jzFsH7foKJYEoNaA.jpeg",
+      "type": "img",
+      "send": true,
+      "id": 1
+    },
+    {
+      "from": 2,
+      "to": 1,
+      "content": "Hello",
+      "type": "msg",
+      "send": true,
+      "id": 2
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "content": "https://cdn-images-1.medium.com/max/2000/1*bvdSF4jzFsH7foKJYEoNaA.jpeg",
+      "type": "img",
+      "send": true,
+      "id": 3
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "content": "Howdy",
+      "type": "msg",
+      "send": true,
+      "id": 4
+    },
+    {
+      "from": 2,
+      "to": 1,
+      "content": "https://www.reaktor.com/wp-content/uploads/2017/11/refactoringjs_ts_js_squarish2-1400x0-c-default.png",
+      "type": "img",
+      "send": true,
+      "id": 5
+    },
+    {
+      "from": 2,
+      "to": 1,
+      "content": "https://codecraft.tv/courses/angular/es6-typescript/template-strings/",
+      "type": "oth",
+      "send": true,
+      "id": 6
+    }
+  ]
+}

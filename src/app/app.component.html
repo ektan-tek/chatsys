@@ -6,23 +6,75 @@
     </button>
   </div>
   <div class="modal-body modal-content-container">
-    <p>temp</p>
+    temp
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
   </div>
 </ng-template>
 
+
 <div class="pgsidebar-container" [class.pgsidebar-is-mobile]="mobileQuery.matches">
   <mat-toolbar color="primary" class="pgsidebar-toolbar">
-    <div class="weblogo-container">
-    </div>
-<h1 class="pgsidebar-app-name">CST333 - Assignment 2</h1>
+    <!--
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon *ngIf="!snav.opened">menu</mat-icon>
+        <mat-icon *ngIf="snav.opened">close</mat-icon>
+      </button>
+      <div class="weblogo-container">
+
+      </div>
+    -->
+
+    <h1 class="pgsidebar-app-name">CST333 -Assignment 2</h1>
     <span class="label-icon-spacer"></span>
-    <!--<mat-icon class="nav-mat-icon" matBadge={{unreadMsg}} matBadgeColor="warn" (click)="nnav.toggle()">email</mat-icon>-->
-    <button mat-icon-button (click)="openModal(content,'Help')">
-      <mat-icon class="mat-label-icon">help</mat-icon>
+    <button mat-icon-button (click)="nnav.toggle()">
+      <mat-icon class="mat-label-icon">email</mat-icon>
     </button>
 
+    <!--<mat-icon class="nav-mat-icon" matBadge={{unreadMsg}} matBadgeColor="warn" (click)="nnav.toggle()">email</mat-icon>
+      <button mat-icon-button (click)="openModal(content,'Profile')">
+        <mat-icon class="mat-label-icon">settings</mat-icon>
+      </button>
+    -->
+
   </mat-toolbar>
+
+
+  <mat-sidenav-container class="pgsidebar-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav class="navbg" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <mat-nav-list>
+        <!--a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a-->
+        <a mat-list-item routerLink="">
+          <i class="material-icons">dashboard</i>
+          Dashboard
+        </a>
+        <a mat-list-item routerLink="">
+          <i class="material-icons">linked_camera</i>
+          Camera
+        </a>
+        <!--
+        <a mat-list-item routerLink="control">
+          <i class="material-icons">games</i>
+          Control
+        </a> -->
+        <a mat-list-item routerLink="settings">
+          <i class="material-icons">settings</i>
+          Settings
+        </a>
+
+      </mat-nav-list>
+    </mat-sidenav>
+
+
+    <mat-sidenav-content class="page-content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
+    <mat-sidenav #nnav [opened]="mobileQuery.matches ? 'false' : 'true'" class="notification-sidenav" mode="side"
+      position="end" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches">
+      <app-server-content></app-server-content>
+    </mat-sidenav>
+  </mat-sidenav-container>
 </div>

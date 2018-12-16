@@ -1,0 +1,66 @@
+<div class="client-button" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutWrap fxLayoutAlign="end stretch" fxLayoutGap="5%">
+  <mat-form-field hintLabel="Max 4 digits" appearance="outline">
+    <input matInput #usrInput type="number" maxlength="4" placeholder="Enter user">
+    <mat-hint align="end">{{usrInput.value?.length || 0}}/4</mat-hint>
+  </mat-form-field>
+  <button mat-raised-button class="button-custom" (click)="addUsers(usrInput.value)">
+    <mat-icon class="
+    button-tab-icon">add_circle</mat-icon>
+    Add new client
+  </button>
+  <button mat-raised-button class="button-custom" (click)="onRefresh()">
+    <mat-icon class="
+    button-tab-icon">refresh</mat-icon>
+    Refresh
+  </button>
+</div>
+<mat-divider class="divider-gaps"></mat-divider>
+<div>
+<table>
+  <tr>
+    <td colspan="4" >
+      <h4>Clients List</h4>
+    </td>
+  </tr>
+  <tr>
+    <th>Client ID</th>
+    <th>Client Name</th>
+    <th>Status</th>
+    <th>Block</th>
+
+  </tr>
+<tr *ngFor="let client of clients | async">
+    <td>{{client.id}}</td>
+    <td>{{client.name}}</td>
+    <!--<td>{{client.msgCount}}</td>-->
+
+    <td *ngIf="client.online" class="online">online</td>
+    <td *ngIf="!client.online"class="offline">offline</td>
+
+<td *ngIf="client.block" class="block">Blocking</td>
+<td *ngIf="!client.block" class="non-block">Active</td>
+
+    <td class="without-border">
+<button mat-stroked-button color="primary" (click)="changeClientStatus(client.id,client.online)">Change Status</button>
+      </td>
+<td class="without-border">
+<button mat-stroked-button color="warn" (click)=" changeBlocking(client.id,client.block)">Change Blocking</button>
+      </td>
+  </tr>
+</table>
+
+
+
+
+<!--
+
+  <ul >
+    <li *ngFor="let client of clients | async">
+      {{ client.id }}
+      {{ client.name }}
+      {{ client.online }}
+    </li>
+  </ul>
+-->
+</div>
+<ng-template #empty> No Clients Yet</ng-template>

@@ -1,0 +1,44 @@
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+  height : 200px;
+}
+
+.client-button{
+  align-content: right;
+}
+.divider-gaps{
+  margin: 10px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+table {
+  width: 100%;
+}
+th,td {
+  text-align: center;
+}
+
+.online{
+  background: greenyellow;
+}
+
+.offline{
+  background: red;
+}
+.block{
+  background: lightskyblue;
+}
+
+.non-block{
+  background:yellow;
+}

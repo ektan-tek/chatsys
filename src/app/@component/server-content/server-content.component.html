@@ -1,0 +1,51 @@
+<h1>Queue</h1>
+<h4>(AKA Server)</h4>
+<div>
+  <app-selector></app-selector>
+</div>
+
+
+<mat-divider></mat-divider>
+<mat-card>
+  <mat-card-header>
+    <!--<div mat-card-avatar class="example-header-image"></div>-->
+    <mat-card-title>Queue Content</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="message-container" #content>
+      <mat-list *ngFor="let msg of queueContents | async">
+        <h4 *ngIf="!msg.send">
+          S{{msg.from}} --> R{{msg.to}} : :
+          <p *ngIf="msg.type=='msg'">
+            {{msg.content}}
+          </p>
+          <img *ngIf="msg.type=='img'" src={{msg.content}} alt="img : C{{msg.from}}->{{msg.to}}" height="30" width="30">
+          <a *ngIf="msg.type=='oth'" target="_blank" href={{msg.content}}>Links</a>
+        </h4>
+      </mat-list>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" [disabled]="content.empty" (click)=onNotify()>Notify</button>
+    <button mat-raised-button color="accent" [disabled]="content.empty" (click)=onClearQueue()>Clear Queue</button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-divider></mat-divider>
+<mat-card>
+  <mat-card-header>
+    <!--<div mat-card-avatar class="example-header-image"></div>-->
+    <mat-card-title>Queue Act</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="message-container" #qAct>
+      <mat-list *ngFor="let msg of queueActions | async">
+        {{msg.action}} : C{{msg.client}} : {{msg.msg}}
+      </mat-list>
+    </div>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="warn" (click)=onClearAction()>Clear Action</button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,86 @@
+<!--
+  <ul *ngIf="clients">
+  <li *ngFor="let client of clients">
+    {{client.name}}
+  </li>
+</ul>
+<ul>
+  <li *ngFor="let client of clients | async">
+    {{ client.id }}
+  </li>
+</ul>
+{{poll_or_get}}
+{{auto_notify}}
+<ng-template *ngIf="clients.isEmpty()"> No Clients Yet </ng-template>
+-->
+<mat-form-field>
+  <mat-select #from placeholder="From" required>
+    <mat-option *ngFor="let client of clients |async" [value]="client" (click)=onSelectSender(client)>
+      C{{client.id}} --> {{client.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-select #to placeholder="To" required>
+    <mat-option *ngFor="let client of clients |async" [value]="client" (click)=onSelectReceiver(client)>
+      C{{client.id}} --> {{client.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-card>
+  <mat-card-header>
+    <!--<div mat-card-avatar class="example-header-image"></div>-->
+    <mat-card-title>Client {{sender.id}}</mat-card-title>
+    <mat-card-subtitle>{{sender.name}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="message-container">
+      <mat-list *ngFor="let msg of messageContent | async">
+        <h4 *ngIf="msg.send">
+          C{{msg.from}} send :
+          <p *ngIf="msg.type=='msg'">
+            {{msg.content}}
+          </p>
+          <img *ngIf="msg.type=='img'" src={{msg.content}} alt="img : C{{msg.from}}->{{msg.to}}" height="30" width="30">
+          <a *ngIf="msg.type=='oth'" target="_blank" href={{msg.content}}>Links</a>
+        </h4>
+      </mat-list>
+    </div>
+
+    <mat-form-field hintLabel="Max 10 characters" appearance="outline">
+      <input matInput #msgInput maxlength="10" placeholder="Enter message">
+      <mat-hint align="end">{{msgInput.value?.length || 0}}/10</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field hintLabel="URL link only - Prefer .jpg,.png" appearance="outline">
+      <input type="url" matInput #urlInput placeholder="Enter url">
+    </mat-form-field>
+    <img *ngIf="!urlInput.empty" [src]=urlInput.value alt="img" height="30" width="30">
+    <!--
+  <form [formGroup]="form" (ngSubmit)="onSubmit(from.value.id,to.value.id)">
+    <div class="form-group">
+      <label for="name">File Name</label>
+      <input type="text" class="form-control" id="name" placeholder="image name" formControlName="name">
+    </div>
+    <div class="form-group">
+      <label for="file_uploader">Input file</label>
+      <input type="file" id="file_uploader" (change)="onFileChange($event)" #fileInput>
+<button type="button" mat-raised-button (click)="clearFile()">clear file</button>
+</div>
+<button type="submit" [disabled]="form.invalid || loading || from.empty || to.empty" mat-raised-button>Send File
+        <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+    </form>
+  -->
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button [disabled]="from.empty || to.empty ||msgInput.empty" (click)=onSendMsg(from.value.id,to.value.id,msgInput.value)>Send
+      Text</button>
+    <button mat-raised-button [disabled]="from.empty || to.empty ||urlInput.empty" (click)=onSendUrl(from.value.id,to.value.id,urlInput.value)>Send
+      Url</button>
+    <button mat-raised-button color="accent" [disabled]="from.empty " (click)=onGetMsg(from.value.id)>GET</button>
+    <button mat-raised-button color="primary" [disabled]="from.empty" (click)=onPollMsg(from.value.id)>POLL</button>
+  </mat-card-actions>
+</mat-card>
